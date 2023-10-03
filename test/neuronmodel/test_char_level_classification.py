@@ -4,7 +4,6 @@ import torch
 import numpy as np
 
 from himeko_neural_model.src.foundations.engine.engine_charlevel import CharLevelMultiClassEngine
-from himeko_neural_model.src.foundations.engine.vocab_node import VocabNode
 from himeko_neural_model.src.foundations.factory.factory_vocab import FactoryVocabularyNode
 from himeko_neural_model.src.neuronmodel.char_level_lstm import CharLevelLstmMultiClass, \
     CharLevelLstmMultiClassGenerator
