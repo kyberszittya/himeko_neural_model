@@ -63,8 +63,7 @@ class CharLevelMultiClassEngine(AbstractInferenceNeuralEngine):
 
     def predict(self, x):
         h0, c0 = self._neural_model.init_hidden(self._hyperparameters['device'])
-        res, _, _ = self._neural_model(x, h0, c0)
-        return res
+        return self._neural_model(x, h0, c0)
 
     def reflexive_train(self):
         pass
