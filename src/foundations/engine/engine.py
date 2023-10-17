@@ -8,7 +8,7 @@ import torch.nn as nn
 from himeko_hypergraph.src.elements.attribute import HypergraphAttribute
 from himeko_hypergraph.src.elements.edge import HyperEdge, ExecutableHyperEdge
 from himeko_hypergraph.src.elements.element import HypergraphElement
-from himeko_hypergraph.src.elements.vertex import HyperVertex
+from himeko_hypergraph.src.elements.vertex import HyperVertex, ExecutableHyperVertex
 from himeko_neural_model.src.foundations.dataset.dataset_node import DatasetNode
 
 
@@ -58,7 +58,7 @@ class NeuralModelGenerator():
         raise NotImplementedError
 
 
-class AbstractInferenceNeuralEngine(HyperVertex, abc.ABC):
+class AbstractInferenceNeuralEngine(ExecutableHyperVertex, abc.ABC):
 
     def __init__(self, name: str, timestamp: int, serial: int, guid: bytes, suid: bytes, label: str,
                  neural_model_generator: NeuralModelGenerator, parent: typing.Optional = None):
