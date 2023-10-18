@@ -23,7 +23,10 @@ class CharLevelMultiClassEngine(AbstractInferenceNeuralEngine):
                 raise ValueError("Hyperparameters are not set, unable to create model")
             self._check_hyperparameters(hyperparameters)
             self._neural_model: CharLevelLstmMultiClass = generator.generate(hyperparameters)
-            self._neural_model.load_state_dict(torch.load(hyperparameters["weights_path"]))
+            if hyperparameters['device'] == 'cpu':
+                self._neural_model.load_state_dict(torch.load(hyperparameters["weights_path"], map_location=torch.device('cpu')))
+            else:
+                self._neural_model.load_state_dict(torch.load(hyperparameters["weights_path"]))
         else:
             self._neural_model = neural_model
         # Setup learning

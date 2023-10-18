@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 
 from himeko_hypergraph.src.elements.attribute import HypergraphAttribute
-from himeko_hypergraph.src.elements.edge import HyperEdge, ExecutableHyperEdge
+from himeko_hypergraph.src.elements.edge import ExecutableHyperEdge
 from himeko_hypergraph.src.elements.element import HypergraphElement
 from himeko_hypergraph.src.elements.vertex import HyperVertex, ExecutableHyperVertex
 from himeko_neural_model.src.foundations.dataset.dataset_node import DatasetNode
@@ -134,12 +134,4 @@ class TrainHyperEdge(ExecutableHyperEdge):
         datanodes = []
         for _datanode in filter(lambda x: isinstance(DatasetNode, x), self.in_relations()):
             datanodes.append(_datanode)
-        """
-        for epoch in range(epochs):
-            epoch_train_loss, epoch_validation_loss = 0.0
-            for train_datanode in datanodes:
-
-            #for name_tensor, label in trai
-        """
-
 
