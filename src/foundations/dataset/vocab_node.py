@@ -1,7 +1,5 @@
 import torch
 
-import numpy as np
-
 import typing
 
 from himeko_hypergraph.src.elements.vertex import HyperVertex
@@ -21,8 +19,8 @@ class VocabNode(HyperVertex):
         with open(path, encoding='utf-8') as f:
             for l in f:
                 self.__vocab.append(l[0])
-        self.__vocab_d = {k: v for v,k in enumerate(self.__vocab)}
-        self.__vocab_inv = {v: k for v,k in enumerate(self.__vocab)}
+        self.__vocab_d = {k: v for v, k in enumerate(self.__vocab)}
+        self.__vocab_inv = {v: k for v, k in enumerate(self.__vocab)}
 
 
 
@@ -44,7 +42,6 @@ class VocabNode(HyperVertex):
                 # print(line_one_hot.shape)
             else:
                 line_one_hot = torch.cat([line_one_hot, self.ltr_one_hot(ltr)])
-        # return torch.unsqueeze(line_one_hot, 1)
         return line_one_hot.type(torch.FloatTensor)
 
     def one_hot_tensor_to_line(self, one_hot_tensor):
@@ -52,6 +49,9 @@ class VocabNode(HyperVertex):
         for one_hot_ltr in one_hot_tensor:
             line += self.__vocab_inv[torch.argmax(one_hot_ltr).item()]
         return line
+
+    def regex(self):
+        return r"^[" + r''.join(self.__vocab).replace(r'-', r'\-') + r"]"
 
     @property
     def vocab(self):
