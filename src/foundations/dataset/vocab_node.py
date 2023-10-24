@@ -1,4 +1,5 @@
 import torch
+import re
 
 import typing
 
@@ -10,9 +11,12 @@ class VocabNode(HyperVertex):
     def __init__(self, name: str, timestamp: int, serial: int, guid: bytes, suid: bytes, label: str,
                  parent: typing.Optional = None):
         super().__init__(name, timestamp, serial, guid, suid, label, parent)
+        # Vocabulary
         self.__vocab = []
         self.__vocab_d = {}
         self.__vocab_inv = {}
+        # Regex
+        self.__base_re = None
 
     def load_vocabulary(self, path):
         self.__vocab = []
@@ -34,7 +38,6 @@ class VocabNode(HyperVertex):
     def line_to_one_hot_tensor(self, line):
         # num_cats: number of categories for the one hot encoding (usually len(vocab))
         line_one_hot = None
-
         for i, ltr in enumerate(line):
             if line_one_hot is None:
                 line_one_hot = self.ltr_one_hot(ltr)
@@ -50,7 +53,23 @@ class VocabNode(HyperVertex):
         return line
 
     def regex(self):
-        return r"^[" + r''.join(self.__vocab).replace(r'-', r'\-') + r"]"
+        if self.__base_re is None:
+            self.__base_re = r"[^.A-Za-z0-9\.\-\|\+\*\_\'@\(\)]"
+
+            compiled_re = re.compile(self.__base_re)
+        """
+        TODO: regression test
+        print(filtered_re)
+        
+        inv_base_re = r"[A-Za-z0-9\.\-]"
+        
+        filtered_re = re.sub(inv_base_re, "", ''.join(self.__vocab)).strip()        
+        
+        print(re.sub(compiled_re, "", ''.join(self.__vocab)))
+        print(re.sub(compiled_re, "", '\\'))
+        print(re.sub(compiled_re, "", '"'))
+        """
+        return self.__base_re
 
     @property
     def vocab(self):
