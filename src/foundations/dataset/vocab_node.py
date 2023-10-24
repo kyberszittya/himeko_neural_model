@@ -21,8 +21,7 @@ class VocabNode(HyperVertex):
                 self.__vocab.append(l[0])
         self.__vocab_d = {k: v for v, k in enumerate(self.__vocab)}
         self.__vocab_inv = {v: k for v, k in enumerate(self.__vocab)}
-
-
+        self._logger.info(f"Used regex: {self.regex()}")
 
     # letters one hot encoding
     def ltr_one_hot(self, ltr):
