@@ -1,0 +1,54 @@
+[chicken_skeleton_kinematics]
+root {
+    leg_skeleton {
+      femur {}
+      tibia {}
+      metatarsus {}
+      tarsus {}
+      @tarsometatarsus { <- metatarsus, -> tarsus }
+      @tibiotarsus { <- tibia, -> metatarsus }
+      @femorotibial { <- femur, -> tibia }
+    }
+    wing_skeleton {
+      coracoid {}
+      humerus {}
+      ulna {}
+      radius {}
+      carpometacarpus {}
+      phalanges {}
+      clavicle {}
+      @carpophalanges { <- carpometacarpus, -> phalanges }
+      @carpus { <- humerus, -> radius, -> ulna }
+      @coracoid_humerus { <- coracoid, -> humerus, <- clavicle }
+    }
+    ilium {}
+    left_leg: -> leg_skeleton.femur{
+    }
+    @left_ilium { <- ilium, -> left_leg }
+    right_leg: -> leg_skeleton.femur{
+    }
+    @right_ilium { <- ilium, -> right_leg }
+    pygostyle {
+    }
+    @pygostyle_ilium { <- pygostyle, -> ilium }
+    scapula {}
+    @ilium_scapula { <- ilium, -> scapula }
+
+    sternum {}
+    @scapula_sternum { <- scapula, -> sternum }
+
+    left_wing: -> wing_skeleton {}
+    @scapula_left_wing { <- sternum, -> left_wing }
+    right_wing: -> wing_skeleton {}
+    @scapula_right_wing { <- sternum, -> right_wing }
+    epistropheus {}
+    @scapula_epistropheus { <- scapula, -> epistropheus }
+    atlas {}
+    @epistropheus_atlas { <- epistropheus, -> atlas }
+    mandible {}
+    @atlas_mandible { <- atlas, -> mandible }
+    quadrate {}
+    @atlas_quadrate { <- atlas, -> quadrate }
+    incisive {}
+    @quadrate_incisive { <- quadrate, -> incisive }
+}

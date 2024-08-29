@@ -1,0 +1,54 @@
+[chicken_skeleton_kinematics]
+root {
+     leg_skeleton {
+       femur {
+         tibia {
+           metatarsus {
+              tarsus {
+              }
+           }
+         }
+       }
+     }
+     wing_skeleton {
+       humerus {
+         ulna {}
+         radius {
+           carpometacarpus {
+             phalanges {
+             }
+           }
+         }
+
+       }
+       @carpus { <- humerus, -> humerus.radius, -> humerus.ulna }
+     }
+     ilium {
+       left_leg: -> leg_skeleton {
+       }
+       right_leg: -> leg_skeleton {
+       }
+       pygostyle {
+       }
+       scapula {
+         clavicle {
+           coracoid {
+             sternum {}
+           }
+           left_wing: -> wing_skeleton {
+           }
+           right_wing: -> wing_skeleton {
+           }
+           epistropheus {
+             atlas {
+               mandible {}
+               quadrate {
+                 incisive {}
+               }
+             }
+           }
+         }
+       }
+     }
+
+}
