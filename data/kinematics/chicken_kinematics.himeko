@@ -1,33 +1,35 @@
-[chicken_skeleton_kinematics]
-root {
+[chicken_skeleton_kinematics
+   import "meta_kinematics_model.himeko"
+]
+root use meta.elements {
     leg_skeleton {
-      femur {}
-      tibia {}
-      metatarsus {}
-      tarsus {}
-      @tarsometatarsus { <- metatarsus, -> tarsus }
-      @tibiotarsus { <- tibia, -> metatarsus }
-      @femorotibial { <- femur, -> tibia }
+      femur: bone {}
+      tibia: bone {}
+      metatarsus: bone {}
+      tarsus: bone {}
+      @tarsometatarsus: joint { <- metatarsus, -> tarsus }
+      @tibiotarsus: joint { <- tibia, -> metatarsus }
+      @femorotibial: joint { <- femur, -> tibia }
     }
     wing_skeleton {
-      coracoid {}
-      humerus {}
-      ulna {}
-      radius {}
-      carpometacarpus {}
-      phalanges {}
-      clavicle {}
-      @carpophalanges { <- carpometacarpus, -> phalanges }
-      @carpus { <- humerus, -> radius, -> ulna }
-      @coracoid_humerus { <- coracoid, -> humerus, <- clavicle }
+      coracoid: bone {}
+      humerus: bone {}
+      ulna: bone {}
+      radius: bone {}
+      carpometacarpus: bone {}
+      phalanges: bone {}
+      clavicle: bone {}
+      @carpophalanges: joint { <- carpometacarpus, -> phalanges }
+      @carpus: joint { <- humerus, -> radius, -> ulna }
+      @coracoid_humerus: joint { <- coracoid, -> humerus, <- clavicle }
     }
-    ilium {}
-    left_leg: -> leg_skeleton.femur{
+    ilium: bone {}
+    left_leg: <<copy>> -> leg_skeleton {
     }
-    @left_ilium { <- ilium, -> left_leg }
-    right_leg: -> leg_skeleton.femur{
+    @left_ilium: joint { <- ilium, -> left_leg }
+    right_leg: <<copy>> -> leg_skeleton {
     }
-    @right_ilium { <- ilium, -> right_leg }
+    @right_ilium: joint { <- ilium, -> right_leg }
     pygostyle {
     }
     @pygostyle_ilium { <- pygostyle, -> ilium }
@@ -37,9 +39,9 @@ root {
     sternum {}
     @scapula_sternum { <- scapula, -> sternum }
 
-    left_wing: -> wing_skeleton {}
+    left_wing: <<copy>> -> wing_skeleton {}
     @scapula_left_wing { <- sternum, -> left_wing }
-    right_wing: -> wing_skeleton {}
+    right_wing: <<copy>> -> wing_skeleton {}
     @scapula_right_wing { <- sternum, -> right_wing }
     epistropheus {}
     @scapula_epistropheus { <- scapula, -> epistropheus }
