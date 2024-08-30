@@ -14,6 +14,7 @@ def main():
     print([x.name for x in root["right_wing"].get_all_children(lambda x: True)])
     print([x.name for x in root["left_wing"].get_all_children(lambda x: True)])
     print(generate_text(root))
+    # TODO: reparse text
 
 
 if __name__ == "__main__":
