@@ -1,9 +1,9 @@
 from himeko.transformations.text.generate_text import generate_text
-from processing.parse_description import ParseDescriptionEdge
+from processing.parse_description import ParseDescriptionEdgeFromFile, ParseDescriptionEdge
 
 
 def main():
-    e = ParseDescriptionEdge("parse_edge", 0, 0, b'0', b'0', "label", None)
+    e = ParseDescriptionEdgeFromFile("parse_edge", 0, 0, b'0', b'0', "label", None)
     p = "../../data/kinematics/chicken_kinematics.himeko"
     library_path = "../../data/kinematics/"
     h = e.execute(path=p, library_path=library_path)
@@ -15,6 +15,9 @@ def main():
     print([x.name for x in root["left_wing"].get_all_children(lambda x: True)])
     print(generate_text(root))
     # TODO: reparse text
+    h_text = ParseDescriptionEdge(
+        "parse_edge", 0, 0, b'0', b'0', "label", None)
+    h_text.execute(text=generate_text(root), library_path=library_path)
 
 
 if __name__ == "__main__":
