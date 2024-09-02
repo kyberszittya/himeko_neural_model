@@ -14,7 +14,10 @@ def main():
     print([x.name for x in root["right_wing"].get_all_children(lambda x: True)])
     print([x.name for x in root["left_wing"].get_all_children(lambda x: True)])
     print(generate_text(root))
-    # TODO: reparse text
+    root["epistropheus"]["position"].value[0] = 5.0
+
+    root["left_wing"]["left_wing_coracoid"]["position"].value[0] = 5.0
+
     h_text = ParseDescriptionEdge(
         "parse_edge", 0, 0, b'0', b'0', "label", None)
     h_text.execute(text=generate_text(root), library_path=library_path)

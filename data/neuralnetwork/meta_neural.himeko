@@ -1,0 +1,116 @@
+[meta_neural_elements ]
+meta {
+    activations {
+        activation {}
+        relu: activation {}
+        sigmoid: activation {}
+        tanh: activation {}
+        softmax: activation {}
+        linear: activation {}
+        gelu: activation {}
+        elu: activation {}
+    }
+    elements {
+        neuron {
+            activation
+            bias 0.0
+            weights  0.0
+        }
+        conv2d: |> -> neuron  {
+            kernel_size 3
+            stride 1
+            padding 0
+            dilation 1
+            groups 1
+        }
+        linear: |> -> neuron {
+            in_features 1
+            out_features 1
+            bias 0.0
+        }
+        dropout: |> -> neuron {
+            p 0.0
+            inplace false
+        }
+        batchnorm1d: |> -> neuron {
+            num_features 1
+            eps 1e-05
+            momentum 0.1
+            affine true
+            track_running_stats true
+        }
+        batchnorm2d: |> -> neuron {
+            num_features 1
+            eps 1e-05
+            momentum 0.1
+            affine true
+            track_running_stats true
+        }
+        maxpool2d: |> -> neuron {
+            kernel_size 3
+            stride 1
+            padding 0
+            dilation 1
+            return_indices false
+            ceil_mode false
+        }
+        avgpool2d: |> -> neuron {
+            kernel_size 3
+            stride 1
+            padding 0
+            ceil_mode false
+            count_include_pad true
+            divisor_override 0
+        }
+        adaptiveavgpool2d: |> -> neuron {
+            output_size 1
+        }
+        adaptiveavgpool3d: |> -> neuron {
+            output_size 1
+        }
+        adaptiveavgpool1d: |> -> neuron {
+            output_size 1
+        }
+        batchnorm3d: |> -> neuron {
+            num_features 1
+            eps 1e-05
+            momentum 0.1
+            affine true
+            track_running_stats true
+        }
+        conv1d: |> -> neuron {
+            in_channels 1
+            out_channels 1
+            kernel_size 3
+            stride 1
+            padding 0
+            dilation 1
+            groups 1
+            bias true
+        }
+        conv3d: |> -> neuron {
+            in_channels 1
+            out_channels 1
+            kernel_size 3
+            stride 1
+            padding 0
+            dilation 1
+            groups 1
+            bias true
+        }
+        dropout2d: |> -> neuron {
+            p 0.0
+            inplace false
+        }
+        dropout3d: |> -> neuron {
+            p 0.0
+            inplace false
+        }
+
+
+
+        @synapse {
+            weight 0.0
+        }
+    }
+}

@@ -1,0 +1,17 @@
+[ mnist_neural
+  import "meta_neural.himeko"
+]
+mnist_network {
+    input_layer: |> -> linear {
+        in_features 784
+        out_features 128
+    }
+    hidden_layer: |> -> linear {
+        in_features 128
+        out_features 64
+    }
+    output_layer: |> -> linear {
+        in_features 64
+        out_features 10
+    }
+}
