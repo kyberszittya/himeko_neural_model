@@ -1,5 +1,6 @@
 from himeko.hbcm.elements.edge import EnumRelationDirection
 from himeko.hbcm.factories.creation_elements import FactoryHypergraphElements
+from himeko.hbcm.visualization.graphviz import create_dot_graph, visualize_dot_graph
 from himeko.transformations.text.generate_text import generate_text
 from processing.parse_description import ParseDescriptionEdgeFromFile, ParseDescriptionEdge
 
@@ -9,7 +10,6 @@ def main():
     n_i0 = FactoryHypergraphElements.create_vertex_default("dataset", 0, engine)
     n_h0 = FactoryHypergraphElements.create_vertex_default("hidden", 0, engine)
     n_o0 = FactoryHypergraphElements.create_vertex_default("output", 0, engine)
-    #e = ParseDescriptionEdgeFromFile("parse_edge", 0, 0, b'0', b'0', "label", None)
     e_parse: ParseDescriptionEdgeFromFile = FactoryHypergraphElements.create_edge_constructor_default(
         ParseDescriptionEdgeFromFile, "parse_edge", 0, engine)
     e_parse += (n_i0, EnumRelationDirection.IN, 1.0)
@@ -20,6 +20,8 @@ def main():
     FactoryHypergraphElements.create_attribute_default("library_path", library_path, "string", 0, n_i0)
     e_parse.execute()
     print(n_h0["root"])
+    G = create_dot_graph(n_h0["root"], composition=True, stereotype=True)
+    visualize_dot_graph(G, "test.png")
 
     """    
     h = e.execute(path=p, library_path=library_path)
