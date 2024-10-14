@@ -1,0 +1,21 @@
+[ mlp_example import "meta_neural.himeko" ]
+mlpminimal use meta.elements {
+    input_layer: |> -> linear {
+        in_features 4
+        out_features 32
+    }
+    hidden_layer: |> -> linear {
+        in_features 32
+        out_features 16
+    }
+    output_layer: |> -> linear {
+        in_features 16
+        out_features 3
+    }
+
+    @connections {
+        @e1: activations.relu {<- input_layer, -> hidden_layer},
+        @e2: activations.relu {<- hidden_layer, -> output_layer},
+        @e3: activations.softmax {<- output_layer}
+    }
+}
