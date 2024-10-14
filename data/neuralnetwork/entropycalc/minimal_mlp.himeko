@@ -2,14 +2,14 @@
 mlpminimal use meta.elements {
     input_layer: |> -> linear {
         in_features 4
-        out_features 32
-    }
-    hidden_layer: |> -> linear {
-        in_features 32
         out_features 16
     }
-    output_layer: |> -> linear {
+    hidden_layer: |> -> linear {
         in_features 16
+        out_features 8
+    }
+    output_layer: |> -> linear {
+        in_features 8
         out_features 3
     }
 
