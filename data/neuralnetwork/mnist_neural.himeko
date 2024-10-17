@@ -1,7 +1,7 @@
 [ mnist_neural
   import "meta_neural.himeko"
 ]
-mnist_network {
+mnist_mlp_network use meta.elements {
     input_layer: |> -> linear {
         in_features 784
         out_features 128
@@ -13,5 +13,11 @@ mnist_network {
     output_layer: |> -> linear {
         in_features 64
         out_features 10
+    }
+
+    @connections {
+        @e1: activations.relu {<- input_layer, -> hidden_layer},
+        @e2: activations.relu {<- hidden_layer, -> output_layer},
+        @e3: activations.softmax {<- output_layer}
     }
 }

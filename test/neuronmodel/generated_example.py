@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
-import torch
 import torch.nn as nn
 import torch.optim as optim
-from generated_mlp import Mlp
 from generated_mlp_minimal import Mlpminimal
 
 from sklearn import datasets
