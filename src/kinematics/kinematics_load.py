@@ -1,8 +1,7 @@
-from himeko.hbcm.elements.edge import EnumRelationDirection
+from himeko.hbcm.elements.edge import EnumHyperarcDirection
 from himeko.hbcm.factories.creation_elements import FactoryHypergraphElements
 from himeko.hbcm.visualization.graphviz import create_dot_graph, visualize_dot_graph
-from himeko.transformations.text.generate_text import generate_text
-from processing.parse_description import ParseDescriptionEdgeFromFile, ParseDescriptionEdge
+from processing.parse_description import ParseDescriptionEdgeFromFile
 
 
 def main():
@@ -12,8 +11,8 @@ def main():
     n_o0 = FactoryHypergraphElements.create_vertex_default("output", 0, engine)
     e_parse: ParseDescriptionEdgeFromFile = FactoryHypergraphElements.create_edge_constructor_default(
         ParseDescriptionEdgeFromFile, "parse_edge", 0, engine)
-    e_parse += (n_i0, EnumRelationDirection.IN, 1.0)
-    e_parse += (n_h0, EnumRelationDirection.OUT, 1.0)
+    e_parse += (n_i0, EnumHyperarcDirection.IN, 1.0)
+    e_parse += (n_h0, EnumHyperarcDirection.OUT, 1.0)
     p = "../../data/kinematics/chicken_kinematics.himeko"
     library_path = "../../data/kinematics/"
     FactoryHypergraphElements.create_attribute_default("path", p, "string", 0, n_i0)
