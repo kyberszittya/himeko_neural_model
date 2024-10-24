@@ -1,0 +1,44 @@
+[mnist_conv
+    import "meta_neural.himeko"
+]
+mnist_conv use meta.elements {
+    input_layer: |> -> conv2d {
+        input_x 28
+        input_y 28
+        kernel_size 3
+        stride 1
+        padding 0
+        dilation 1
+        groups 1
+    }
+    pool_0: |> -> maxpool2d {
+        kernel_size 3
+        stride 1
+        padding 0
+        dilation 1
+    }
+    conv_0: |> -> conv2d {
+        kernel_size 3
+        stride 1
+        padding 0
+        dilation 1
+        groups 1
+    }
+    pool_1: |> -> maxpool2d {
+        kernel_size 3
+        stride 1
+        padding 0
+        dilation 1
+    }
+    conv_1: |> -> conv2d {
+        kernel_size 3
+        stride 1
+        padding 0
+        dilation 1
+        groups 1
+    }
+    fc: |> -> linear {
+        out_features 10
+
+    }
+}
