@@ -1,0 +1,70 @@
+[chicken_camera]
+cabin
+{
+    area 20
+    ip_camera {
+        ingress_protection ip65
+        resolution 1080p
+        frame_rate 30
+        protocols ["http", "rtsp"]
+        encoding ["h264", "h265"]
+    }
+    camera: ip_camera {
+    }
+    camera2: ip_camera {
+    }
+    camera3: ip_camera {
+    }
+    chicken {
+        count 20
+        type "hungarian_yellow"
+    }
+    @observes {
+        -> camera,
+        -> camera2,
+        -> camera3,
+        <- chicken
+    }
+}
+buy_camera: query {
+   camera_product: match {
+        ip_camera, country, price
+   }
+   result: tabular {
+       link
+       price
+       product
+   }
+   limits {
+       result{
+           count {
+                  min 10
+                  max 20
+           }
+       }
+    }
+   }
+   @search {
+       <- ip_camera
+       <- internet
+       <- webshops
+       <- camera_product
+       <- limits.result
+       -> result.link
+       -> result.price
+       -> result.product
+       @format {
+         <- result
+       }
+   }
+}
+based in that, execute buy_camera with limits, and format
+
+
+Product	Price	Link
+Amcrest ProHD ADC2W	$74.99	Amcrest ADC2W
+Amcrest SmartHome ASH26-W	$169.99	Amcrest ASH26-W
+Wyze Cam Pan v3	$39.98	Home Depot
+Wyze Outdoor Cam	$59.99	Best Buy
+EZVIZ LC1C Full HD	$91.41	Amazon Search
+ZOSI 1080P H.265+ System	Varies	Amazon Search
