@@ -1,12 +1,14 @@
-from himeko.hbcm.elements.edge import HyperEdge
-from generate_pytorch import GenerateTorchCode
-from processing.parse_description import ParseDescriptionEdgeFromFile
-
 import os
 import sys
 
+from himeko.hbcm.elements.edge import HyperEdge
+from generate_pytorch import GenerateTorchCode
+
+from himeko_lang.processing.parse_description import ParseDescriptionEdgeFromFile
+
 BASEDIR = os.path.dirname(os.path.abspath(__file__))
-PROJECTDIR = os.path.dirname(os.path.join(BASEDIR, "..","..", ".."))
+PROJECTDIR = os.path.dirname(os.path.join(BASEDIR, "..", "..", ".."))
+
 
 def main(args):
     print(args)

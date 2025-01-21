@@ -2,3 +2,11 @@
 /src/progeny/roadprofile/data/útprofil_X_jobb.csv
 /examples/vision/sam_detection.ipynb
 /test/neuronmodel/data/MNIST/raw/
+/analysis/computer_vision/tokyo_01.png
+/analysis/computer_vision/tokyo_02.png
+/analysis/computer_vision/yolo11n.pt
+/analysis/computer_vision/yolo11n-pose.pt
+/analysis/computer_vision/sam2.1_b.pt
+/analysis/computer_vision/cattle_02.png
+/analysis/computer_vision/cattle.png
+/analysis/computer_vision/a*.png
