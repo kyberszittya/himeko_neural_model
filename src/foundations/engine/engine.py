@@ -5,11 +5,12 @@ import typing
 import torch
 import torch.nn as nn
 
-from himeko_hypergraph.src.elements.attribute import HypergraphAttribute
-from himeko_hypergraph.src.elements.edge import ExecutableHyperEdge
-from himeko_hypergraph.src.elements.element import HypergraphElement
-from himeko_hypergraph.src.elements.vertex import HyperVertex, ExecutableHyperVertex
-from himeko_neural_model.src.foundations.dataset.dataset_node import DatasetNode
+from foundations.dataset.dataset_node import DatasetNode
+from himeko.hbcm.elements.attribute import HypergraphAttribute
+from himeko.hbcm.elements.element import HypergraphElement
+from himeko.hbcm.elements.executable.edge import ExecutableHyperEdge
+from himeko.hbcm.elements.executable.vertex import ExecutableHyperVertex
+from himeko.hbcm.elements.vertex import HyperVertex
 
 
 class HyperParameterNode(HyperVertex):

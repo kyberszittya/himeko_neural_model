@@ -3,7 +3,7 @@ import typing
 import torch
 import torch.nn as nn
 
-from himeko_neural_model.src.foundations.engine.engine import NeuralModelGenerator
+from foundations.engine.engine import NeuralModelGenerator
 
 
 class CharLevelLstmMultiClass(nn.Module):

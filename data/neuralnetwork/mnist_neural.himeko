@@ -1,6 +1,6 @@
-[ mnist_neural
+mnist_neural
   import "meta_neural.himeko"
-]
+
 mnist_mlp_network use meta.elements {
     input_layer: |> -> linear {
         in_features 784

@@ -5,8 +5,8 @@ import torch
 import unicodedata
 import unidecode
 
-from himeko_neural_model.src.foundations.factory.factory_vocab import FactoryVocabularyNode
-from himeko_neural_model.src.neuronmodel.char_level_lstm import CharLevelLstmMultiClassGenerator, \
+from foundations.factory.factory_vocab import FactoryVocabularyNode
+from neuronmodel.char_level_lstm import CharLevelLstmMultiClassGenerator, \
     CharLevelLstmMultiClass
 
 def softmax_to_prediction(softmax_output, classes):

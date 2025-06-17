@@ -1,6 +1,6 @@
-[mnist_conv
+mnist_conv
     import "meta_neural.himeko"
-]
+
 mnist_conv use meta.elements {
     input_layer: |> -> conv2d {
         input_x 28
@@ -41,9 +41,9 @@ mnist_conv use meta.elements {
         out_features 10
     }
     @connections {
-        @e1: activations.relu {<- input_layer, -> pool_0},  @e2: activations.relu {<- pool_0, -> conv_0},
-        @e3: activations.relu {<- conv_0, -> pool_1}, @e4: activations.relu {<- pool_1, -> conv_1},
-        @e5: activations.relu {<- conv_1, -> fc},  @e6: activations.softmax {<- fc}
+        @e1: activations.relu {+ input_layer, - pool_0},  @e2: activations.relu {<- pool_0, -> conv_0},
+        @e3: activations.relu {+ conv_0, - pool_1}, @e4: activations.relu {<- pool_1, -> conv_1},
+        @e5: activations.relu {+ conv_1, - fc},  @e6: activations.softmax {<- fc}
     }
 
 }

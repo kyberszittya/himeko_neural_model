@@ -10,8 +10,8 @@ import unidecode
 import pandas as pd
 import numpy as np
 
-from himeko_hypergraph.src.elements.edge import ExecutableHyperEdge
-from himeko_hypergraph.src.elements.vertex import HyperVertex
+from himeko.hbcm.elements.executable.edge import ExecutableHyperEdge
+from himeko.hbcm.elements.vertex import HyperVertex
 
 DATA, LABEL = 'data', 'label'
 

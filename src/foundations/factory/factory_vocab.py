@@ -1,8 +1,8 @@
 import typing
 
-from himeko_hypergraph.src.elements.vertex import HyperVertex
-from himeko_hypergraph.src.factories.creation_elements import FactoryHypergraphElements
-from himeko_neural_model.src.foundations.dataset.vocab_node import VocabNode
+from foundations.dataset.vocab_node import VocabNode
+from himeko.hbcm.elements.vertex import HyperVertex
+from himeko.hbcm.factories.creation_elements import FactoryHypergraphElements
 
 
 class FactoryVocabularyNode(FactoryHypergraphElements):

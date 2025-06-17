@@ -1,4 +1,4 @@
-[ mlp_example import "meta_neural.himeko" ]
+mlp_example import "meta_neural.himeko"
 mlp use meta.elements {
     input_layer: |> -> linear {
         in_features 4
@@ -14,8 +14,8 @@ mlp use meta.elements {
     }
 
     @connections {
-        @e1: activations.relu {<- input_layer, -> hidden_layer},
-        @e2: activations.relu {<- hidden_layer, -> output_layer},
-        @e3: activations.softmax {<- output_layer}
+        @e1: activations.relu {+ input_layer, - hidden_layer},
+        @e2: activations.relu {+ hidden_layer, - output_layer},
+        @e3: activations.softmax {+ output_layer}
     }
 }

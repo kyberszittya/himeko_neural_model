@@ -1,4 +1,4 @@
-[meta_neural_elements ]
+meta_neural_elements
 meta {
     activations {
         activation {}
